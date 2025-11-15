@@ -8,6 +8,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// HOME ROUTE (To show status on Render)
+app.get("/", (req, res) => {
+  res.send("OTP Server is running...");
+});
+
 // SEND OTP
 app.post("/send-otp", async (req, res) => {
   try {
@@ -63,4 +68,10 @@ app.post("/verify-otp", async (req, res) => {
   }
 });
 
-app.listen(5000, () => console.log("Server started on PORT 5000"));
+// RENDER PORT FIX (IMPORTANT)
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`✅ Server running on PORT ${PORT}`);
+  console.log(`➡ API URL: https://24-server.onrender.com/send-otp`);
+});
