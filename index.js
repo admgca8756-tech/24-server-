@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// HOME ROUTE (To show status on Render)
+// HOME ROUTE (To check render status)
 app.get("/", (req, res) => {
   res.send("OTP Server is running...");
 });
@@ -68,10 +68,10 @@ app.post("/verify-otp", async (req, res) => {
   }
 });
 
-// RENDER PORT FIX (IMPORTANT)
+// PORT FIX FOR RENDER
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`✅ Server running on PORT ${PORT}`);
-  console.log(`➡ API URL: https://24-server.onrender.com/send-otp`);
+  console.log(`➡ API URL: https://two4-server-3nuc.onrender.com/send-otp`);
 });
